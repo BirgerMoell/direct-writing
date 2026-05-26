@@ -1,0 +1,4 @@
+interface:
+  display_name: "Direct Writing"
+  short_description: "Remove self-referential prose"
+  default_prompt: "Use $direct-writing to rewrite this text so it speaks directly about the subject."
