@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Direct Writing Skill</title>
+    <meta name="description" content="A Codex skill that removes self-referential prose and rewrites text so it speaks directly about the subject.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top">Direct Writing</a>
+      <nav aria-label="Primary">
+        <a href="#problem">Problem</a>
+        <a href="#install">Install</a>
+        <a href="#use">Use</a>
+        <a href="#examples">Examples</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker">Codex Skill</p>
+          <h1>Write About The Subject, Not The Container.</h1>
+          <p class="lede">
+            Direct Writing removes copy that talks about the page, course, repo,
+            example, author, agent, or writing process when the real subject is
+            the method, artifact, claim, or action.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#install">Install for Codex</a>
+            <a class="button secondary" href="https://github.com/BirgerMoell/direct-writing">GitHub repo</a>
+          </div>
+        </div>
+        <div class="comparison" aria-label="Before and after example">
+          <div class="compare-row before">
+            <span>Before</span>
+            <p>This example teaches students how DPO can be used in the course.</p>
+          </div>
+          <div class="compare-row after">
+            <span>After</span>
+            <p>DPO compares chosen and rejected completions directly, avoiding a separately trained reward model.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band" id="problem">
+        <div>
+          <p class="kicker">The Problem</p>
+          <h2>Self-reference weakens technical copy.</h2>
+        </div>
+        <div class="text-column">
+          <p>
+            Phrases like "this page explains", "students can study", and "the
+            repo includes" move attention away from the actual concept. The
+            skill rewrites those sentences so the method or artifact carries the
+            claim.
+          </p>
+          <p>
+            It does not ban words like course, student, page, or repository.
+            It keeps them when they are the real subject, such as deadlines,
+            installation, policy, or publishing details.
+          </p>
+        </div>
+      </section>
+
+      <section class="rules" aria-labelledby="rules-title">
+        <div>
+          <p class="kicker">Rewrite Rules</p>
+          <h2 id="rules-title">Four moves do most of the work.</h2>
+        </div>
+        <ol>
+          <li><strong>Name the real subject.</strong><span>DPO, GRPO, local inference, the checkpoint, the evaluator, the reader action.</span></li>
+          <li><strong>Replace meta verbs.</strong><span>Turn "shows", "teaches", and "explains" into "compares", "scores", "loads", "verifies", or "trains".</span></li>
+          <li><strong>Keep operational facts.</strong><span>Commands, deadlines, paths, assignment policies, and install steps stay concrete.</span></li>
+          <li><strong>Run the portability test.</strong><span>If a sentence fails outside the current page, rewrite it around the concept.</span></li>
+        </ol>
+      </section>
+
+      <section class="install" id="install">
+        <div>
+          <p class="kicker">Install</p>
+          <h2>Add It To Codex.</h2>
+          <p>
+            Clone the repository into the Codex skills directory. Use
+            <code>CODEX_HOME</code> if it is set; otherwise use
+            <code>~/.codex</code>.
+          </p>
+        </div>
+        <div class="command-list">
+          <button class="copy" data-copy="mkdir -p ${CODEX_HOME:-$HOME/.codex}/skills">mkdir -p ${CODEX_HOME:-$HOME/.codex}/skills</button>
+          <button class="copy" data-copy="git clone https://github.com/BirgerMoell/direct-writing.git ${CODEX_HOME:-$HOME/.codex}/skills/direct-writing">git clone https://github.com/BirgerMoell/direct-writing.git ${CODEX_HOME:-$HOME/.codex}/skills/direct-writing</button>
+          <button class="copy" data-copy="Use $direct-writing to rewrite this text so it speaks directly about the subject.">Use $direct-writing to rewrite this text so it speaks directly about the subject.</button>
+        </div>
+      </section>
+
+      <section class="band" id="use">
+        <div>
+          <p class="kicker">Use</p>
+          <h2>Trigger it whenever prose drifts into meta commentary.</h2>
+        </div>
+        <div class="text-column">
+          <p>
+            In Codex, invoke it explicitly with <code>$direct-writing</code>, or
+            let it trigger when a writing task asks for less self-referential,
+            less meta, more direct, or more subject-centered copy.
+          </p>
+          <p>
+            In other tools, use the repository's <code>SKILL.md</code> as a
+            project rule, agent instruction, or reusable editing prompt. The
+            pattern library lives in <code>references/patterns.md</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="examples" id="examples">
+        <div>
+          <p class="kicker">Examples</p>
+          <h2>Before And After.</h2>
+        </div>
+        <div class="example-grid">
+          <article>
+            <h3>Technical Method</h3>
+            <p class="bad">This page shows why cross-entropy loss matters.</p>
+            <p class="good">Cross-entropy loss penalizes low probability on the correct target token.</p>
+          </article>
+          <article>
+            <h3>Project Copy</h3>
+            <p class="bad">Students can use GRPO to study verifiable rewards.</p>
+            <p class="good">GRPO uses verifier scores to increase the probability of successful completions.</p>
+          </article>
+          <article>
+            <h3>Artifact Copy</h3>
+            <p class="bad">This example teaches local inference.</p>
+            <p class="good">Local inference loads released files and generates without an external API.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Skill file: <code>SKILL.md</code></span>
+      <a href="https://github.com/BirgerMoell/direct-writing">github.com/BirgerMoell/direct-writing</a>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
